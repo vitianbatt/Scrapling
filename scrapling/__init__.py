@@ -7,6 +7,7 @@ Personal fork notes:
 - Forked from D4Vinci/Scrapling for learning and personal projects
 - See README for original project documentation
 - Added SyncFetcher alias since I always mix up Fetcher vs AsyncFetcher
+- Added PlaywrightFetcher alias (lowercase 'w') since I keep typo-ing it
 """
 
 __version__ = "0.2.9"
@@ -24,6 +25,9 @@ Page = Adaptor
 # Alias: makes it clearer which fetcher is synchronous vs async
 SyncFetcher = Fetcher
 
+# Alias: I always type 'Playwright' not 'PlayWright' (camelCase trips me up)
+PlaywrightFetcher = PlayWrightFetcher
+
 __all__ = [
     # Fetchers
     "Fetcher",
@@ -38,4 +42,5 @@ __all__ = [
     # Personal aliases
     "Page",
     "SyncFetcher",
+    "PlaywrightFetcher",
 ]
