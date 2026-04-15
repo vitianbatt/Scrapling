@@ -8,6 +8,7 @@ Personal fork notes:
 - See README for original project documentation
 - Added SyncFetcher alias since I always mix up Fetcher vs AsyncFetcher
 - Added PlaywrightFetcher alias (lowercase 'w') since I keep typo-ing it
+- Added AsyncPage alias for clarity when working with async fetcher results
 """
 
 __version__ = "0.2.9"
@@ -28,6 +29,10 @@ SyncFetcher = Fetcher
 # Alias: I always type 'Playwright' not 'PlayWright' (camelCase trips me up)
 PlaywrightFetcher = PlayWrightFetcher
 
+# Alias: Adaptors (plural) is the collection returned by async/multi-page fetches
+# naming it Pages feels more intuitive when iterating results
+Pages = Adaptors
+
 __all__ = [
     # Fetchers
     "Fetcher",
@@ -41,6 +46,7 @@ __all__ = [
     "AttributesHandler",
     # Personal aliases
     "Page",
+    "Pages",
     "SyncFetcher",
     "PlaywrightFetcher",
 ]
