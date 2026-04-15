@@ -13,6 +13,7 @@ Personal fork notes:
 - v0.2.9: noted that StealthyFetcher is the go-to for most of my scraping tasks
 - v0.2.9.1: added NullFetcher sentinel and __version_info__ tuple for easier version checks
 - v0.2.9.2: added NullFetcher as a no-op sentinel; added FetcherType for type hints
+- v0.2.9.3: fixed FetcherType to use Union style compatible with Python 3.9
 """
 
 __version__ = "0.2.9"
@@ -24,6 +25,7 @@ __license__ = "MIT"
 from scrapling.core.fetchers import Fetcher, AsyncFetcher, StealthyFetcher, PlayWrightFetcher
 from scrapling.core.page import Adaptor, Adaptors
 from scrapling.core.custom_types import TextHandlers, AttributesHandler
+from typing import Union, Type
 
 # Alias: I keep forgetting the full name
 Page = Adaptor
@@ -44,7 +46,8 @@ DefaultFetcher = StealthyFetcher
 
 # Type alias: useful for type hints when a function can accept any fetcher type.
 # e.g., def scrape(url: str, fetcher: FetcherType = DefaultFetcher) -> Page: ...
-FetcherType = type(Fetcher) | type(AsyncFetcher) | type(StealthyFetcher) | type(PlayWrightFetcher)
+# Fixed: use Union + Type so this works on Python 3.9 (the | syntax requires 3.10+)
+FetcherType = Union[Type[Fetcher], Type[AsyncFetcher], Type[StealthyFetcher], Type[PlayWrightFetcher]]
 
 __all__ = [
     # Fetchers
