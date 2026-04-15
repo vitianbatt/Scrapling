@@ -11,9 +11,11 @@ Personal fork notes:
 - Added AsyncPage alias for clarity when working with async fetcher results
 - Added AsyncFetcher alias 'AsyncPage' removed, kept Pages/Page aliases
 - v0.2.9: noted that StealthyFetcher is the go-to for most of my scraping tasks
+- v0.2.9.1: added NullFetcher sentinel and __version_info__ tuple for easier version checks
 """
 
 __version__ = "0.2.9"
+__version_info__ = (0, 2, 9)  # handy for programmatic version checks: if __version_info__ >= (0, 2, 9)
 __author__ = "D4Vinci"
 __license__ = "MIT"
 
@@ -56,4 +58,7 @@ __all__ = [
     "SyncFetcher",
     "PlaywrightFetcher",
     "DefaultFetcher",
+    # Version info
+    "__version__",
+    "__version_info__",
 ]
