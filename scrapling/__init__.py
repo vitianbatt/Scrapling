@@ -12,6 +12,7 @@ Personal fork notes:
 - Added AsyncFetcher alias 'AsyncPage' removed, kept Pages/Page aliases
 - v0.2.9: noted that StealthyFetcher is the go-to for most of my scraping tasks
 - v0.2.9.1: added NullFetcher sentinel and __version_info__ tuple for easier version checks
+- v0.2.9.2: added NullFetcher as a no-op sentinel; added FetcherType for type hints
 """
 
 __version__ = "0.2.9"
@@ -41,6 +42,10 @@ Pages = Adaptors
 # Use Fetcher only for simple/public APIs that don't need stealth headers.
 DefaultFetcher = StealthyFetcher
 
+# Type alias: useful for type hints when a function can accept any fetcher type.
+# e.g., def scrape(url: str, fetcher: FetcherType = DefaultFetcher) -> Page: ...
+FetcherType = type(Fetcher) | type(AsyncFetcher) | type(StealthyFetcher) | type(PlayWrightFetcher)
+
 __all__ = [
     # Fetchers
     "Fetcher",
@@ -58,6 +63,7 @@ __all__ = [
     "SyncFetcher",
     "PlaywrightFetcher",
     "DefaultFetcher",
+    "FetcherType",
     # Version info
     "__version__",
     "__version_info__",
