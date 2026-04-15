@@ -9,6 +9,8 @@ Personal fork notes:
 - Added SyncFetcher alias since I always mix up Fetcher vs AsyncFetcher
 - Added PlaywrightFetcher alias (lowercase 'w') since I keep typo-ing it
 - Added AsyncPage alias for clarity when working with async fetcher results
+- Added AsyncFetcher alias 'AsyncPage' removed, kept Pages/Page aliases
+- v0.2.9: noted that StealthyFetcher is the go-to for most of my scraping tasks
 """
 
 __version__ = "0.2.9"
@@ -33,6 +35,10 @@ PlaywrightFetcher = PlayWrightFetcher
 # naming it Pages feels more intuitive when iterating results
 Pages = Adaptors
 
+# Personal note: StealthyFetcher is my default choice for most scraping tasks.
+# Use Fetcher only for simple/public APIs that don't need stealth headers.
+DefaultFetcher = StealthyFetcher
+
 __all__ = [
     # Fetchers
     "Fetcher",
@@ -49,4 +55,5 @@ __all__ = [
     "Pages",
     "SyncFetcher",
     "PlaywrightFetcher",
+    "DefaultFetcher",
 ]
